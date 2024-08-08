@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+/* global styles */
+
+@font-face {
+    font-family: Kanit;
+    font-weight: 200;
+    font-style: normal;
+    src: url("../fonts/Kanit-ExtraLight.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Kanit;
+    font-weight: normal;
+    font-style: normal;
+    src: url("../fonts/Kanit-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Kanit;
+    font-weight: bold;
+    font-style: normal;
+    src: url("../fonts/Kanit-Bold.ttf") format("truetype");
+}
+
+/* scrollbar Firefox */
+* {
+    scrollbar-width: 8px;
+    scrollbar-color: #475569 #0f172a1a;
+}
+
+/* scrollbar Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #6b728040;
+    border-radius: 12px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #475569;
+    border-radius: 12px;
+}
+
+/* whatsapp like chat design */
+
+.speech-bubble-right::before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 5px solid #9ae6b4;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #9ae6b4;
+    border-bottom: 5px solid transparent;
+    right: -10px;
+    top: 0;
+}
+
+.speech-bubble-left::before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 5px solid transparent;
+    border-right: 5px solid white;
+    border-top: 5px solid white;
+    border-bottom: 5px solid transparent;
+    left: -10px;
+    top: 0;
+}
+
+/* --------------------------------------- */
+/* ---------- View Transitions ----------- */
+/* --------------------------------------- */
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-out {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slide-from-right {
+    from {
+        transform: translateX(90px);
+    }
+}
+
+@keyframes slide-to-left {
+    to {
+        transform: translateX(-90px);
+    }
+}
+
+/* define animations for the old and new content */
+::view-transition-old(slide-it) {
+    animation: 180ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+        600ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+}
+
+::view-transition-new(slide-it) {
+    animation: 420ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+        600ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+}
+
+/* tie the view transition to a given CSS class */
+.sample-transition {
+    view-transition-name: slide-it;
+}

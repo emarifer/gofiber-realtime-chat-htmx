@@ -1,0 +1,30 @@
+<section class="flex flex-col items-center justify-center h-[100vh] gap-4">
+    <div class="items-center justify-center flex flex-col gap-4">
+        <h1 class="text-9xl font-extrabold text-gray-700 tracking-widest">
+            {{ .errorCode }}
+        </h1>
+        {{ if eq .errorCode 404 }}
+        <h2 class="bg-rose-700 px-2 text-sm rounded rotate-[20deg] absolute">
+            Not Found
+        </h2>
+        {{ else }}
+        <h2 class="bg-rose-700 px-2 text-sm rounded rotate-[20deg] absolute">
+            Internal Server Error
+        </h2>
+        {{ end }}
+    </div>
+    {{ if eq .errorCode 404 }}
+    <p class="text-xs text-center md:text-sm text-gray-400">
+        Page Not Found.
+    </p>
+    {{ else }}
+    <p class="text-xs text-center md:text-sm text-gray-400">
+        An unexpected condition was encountered.
+    </p>
+    {{ end }}
+
+    <a hx-swap="transition:true" href="/" class="btn btn-secondary btn-outline">
+        ← Go Back
+    </a>
+
+</section>

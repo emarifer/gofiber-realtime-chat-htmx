@@ -1,0 +1,22 @@
+<h1 class="text-4xl font-bold text-center pb-4 flex gap-2 w-fit mx-auto">
+    <span class="text-sky-500">Go</span>
+    <img src="/static/img/standing.svg" class="inline -translate-y-2" width="70" alt="Gopher Logo">
+    <span class="text-pink-600">ChatX</span>
+</h1>
+
+<section hx-ext="ws" ws-connect="/ws" class="card w-fit bg-base-200 shadow-xl mx-auto m-8">
+    <div class="p-8 m-8 w-[640px] overflow-y-auto max-h-72">
+        <ul id="messages" class="relative flex flex-col px-8 justify-end gap-3">
+            <!-- chat messages will be appended here -->
+        </ul>
+    </div>
+
+    <form class="rounded-xl drop-shadow-xl flex items-center justify-center gap-4 p-8 w-[640px] mx-auto" ws-send
+        hx-on:submit="this.reset()">
+        <input name="msg" type="text" class="input input-bordered input-primary bg-slate-800 w-full"
+            placeholder="Type your message…" required autofocus />
+        <button type="submit" class="badge badge-primary px-6 py-4 hover:scale-[1.1]">
+            Send
+        </button>
+    </form>
+</section>

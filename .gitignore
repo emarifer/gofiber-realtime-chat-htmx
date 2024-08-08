@@ -1,0 +1,7 @@
+tmp
+bin
+
+web/tailwind/node_modules
+
+app_data.db
+*.fiber.gz

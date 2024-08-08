@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real-time chat web application written in golang based on websocket" />
+    <meta name="google" content="notranslate" />
+    <link rel="shortcut icon" href="/static/img/Go_gopher_favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/static/css/tailwind.css">
+    <title>ChatX | {{ .Title }}</title>
+    <script src="/static/js/htmx.min.js"></script>
+    <script src="/static/js/ws.js"></script>
+    <script src="/static/js/_hyperscript.min.js"></script>
+    <script src="/static/js/sweetalert2@11.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/response-targets.js"></script>
+</head>
+
+<body class="sample-transition" hx-boost="true" hx-ext="response-targets">
+    <header>
+        {{ if not .isError }}
+        {{ template "navbar" .}}
+        {{ end }}
+    </header>
+
+    <main {{ if not .isError }} class="pt-48" {{ end }}>
+        {{ embed }}
+    </main>
+
+    <footer class="w-fit mx-auto mt-4">
+        {{ template "flash" .}}
+    </footer>
+</body>
+
+</html>

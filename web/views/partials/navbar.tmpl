@@ -1,0 +1,42 @@
+{{ define "navbar" }}
+
+<nav class="navbar fixed top-12 z-10">
+    {{ if .username | not | not }}
+    <div class="navbar-start pl-12">
+        <span class="font-extralight text-xl text-sky-400 uppercase">
+            {{ .username }}
+        </span>
+    </div>
+    <div class="navbar-end pr-12">
+        <button hx-swap="transition:true" hx-post="/logout" hx-confirm="Are you sure you want to log out?" onclick="this.addEventListener('htmx:confirm', (e) => {
+                    e.preventDefault()
+                    Swal.fire({
+                        title: 'Do you want to perform this action?',
+                        text: `${e.detail.question}`,
+                        icon: 'warning',
+                        background: '#1D232A',
+                        color: '#A6ADBA',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes'
+                    }).then((result) => {
+                        if(result.isConfirmed) e.detail.issueRequest(true);
+                    })
+                })" hx-target="body" hx-push-url="true"
+            class="badge badge-secondary badge-outline px-6 py-4 hover:scale-[1.1]">
+            Logout
+        </button>
+    </div>
+    {{ else }}
+    <a class="navbar-center w-fit mx-auto" href="/" hx-swap="transition:true">
+        <h1 class="text-4xl font-bold text-center flex gap-2">
+            <span class="text-sky-500">Go</span>
+            <img src="/static/img/standing.svg" class="inline -translate-y-2" width="70" alt="Gopher Logo">
+            <span class="text-pink-600">ChatX</span>
+        </h1>
+    </a>
+    {{ end }}
+</nav>
+
+{{ end }}

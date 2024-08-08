@@ -1,0 +1,17 @@
+<ul hx-swap-oob="beforeend:#messages">
+    <li {{ if .ItsMe }}
+        class="text-xs ml-auto rounded-lg rounded-tr-none p-2 bg-green-300 flex flex-col relative speech-bubble-right min-w-52 max-w-80"
+        {{ else }}
+        class="text-xs mr-auto rounded-lg rounded-tl-none p-2 bg-white flex flex-col relative speech-bubble-left min-w-52 max-w-80"
+        {{ end }}>
+        <span class="text-[10px] font-extrabold mr-2 text-sky-600">
+            {{- .Username }}:
+        </span>
+        <span class="text-base-300">
+            {{- .Text }}
+        </span>
+        <p class="text-end text-[10px] mr-2 text-slate-500">
+            {{- .Time }}
+        </p>
+    </li>
+</ul>
