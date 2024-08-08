@@ -86,7 +86,7 @@ $ npm run --prefix web/tailwind/ watch-css # leave Tailwindcss running in watch 
 $ npm run --prefix web/tailwind/ build-css-prod # building minified CSS for production
 ```
 
-In order to test the application on your machine you will need to have 2 browsers open so you can log in to both separately.
+In order to test the application on your machine you will need to have 2 browsers open so you can log in to both separately. If you want, you can try the application online, since I have it deployed in Render, by entering [here](https://gochatx-emarifer.onrender.com/) (but you will have to be patient since the free server can take up to a minute to start ¯\\\_(ツ)\_/¯).
 
 ---
 
